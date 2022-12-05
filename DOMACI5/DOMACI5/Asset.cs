@@ -9,7 +9,7 @@ namespace DOMACI5
     public abstract class Asset
     {
         public Guid Adresa { get; }
-        public string Ime; //nije moguce imat 2 fungible asseta s istim imenon       
+        public string Ime { get; set; }//nije moguce imat 2 fungible asseta s istim imenon       
         public Asset(string ime)
         {
             Adresa = Guid.NewGuid();

@@ -6,7 +6,28 @@ using System.Threading.Tasks;
 
 namespace DOMACI5
 {
-    internal class Transakcija
+    public abstract class Transakcija
     {
+        public Guid Id { get; }
+        public Guid AdresaAsseta { get; }
+        public DateTime Datum { get; }
+        public Guid AdresaWalletaKojiSaljeAsset { get; }
+        public Guid AdresaWalletaKojiPrimaAsset { get; }
+
+        public Transakcija(Guid adresaAsseta, DateTime datum, Guid adresaWalletaKojiSaljeAsset, Guid adresaWalletaKojiPrimaAsset)
+        {
+            Id = Guid.NewGuid();
+            AdresaAsseta = adresaAsseta;
+            Datum = datum;
+            AdresaWalletaKojiSaljeAsset = adresaWalletaKojiSaljeAsset;
+            AdresaWalletaKojiPrimaAsset = adresaWalletaKojiPrimaAsset;
+        }
+
+        public bool Opozvana()
+        {
+            return false;
+        }
+
+
     }
 }

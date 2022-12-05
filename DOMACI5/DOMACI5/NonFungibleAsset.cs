@@ -8,8 +8,8 @@ namespace DOMACI5
 {
     public class NonFungibleAsset : Asset
     {
-        public double Vrijednost;
-        public string AdresaFungibleAssetaNaKojuSeTaVrijednostOdnosi { get; }
+        public double Vrijednost { get; set; }
+        public Guid AdresaFungibleAssetaNaKojuSeTaVrijednostOdnosi { get; }
 
         public NonFungibleAsset(string ime, double vrijednost, Guid adresaFungibleAssetaNaKojuSeTaVrijednostOdnosi) : base(ime)
         {

@@ -8,6 +8,7 @@ namespace DOMACI5
 {
     public class EthereumWallet : Wallet
     {
-        public List<Guid> AdreseNonFungibleAssetaKojePosjeduje { get; set; }
+        public List<Guid> AdreseNonFungibleAssetaKojePosjeduje { get; set; } = new List<Guid>();
+        public EthereumWallet() : base() { }
     }
 }

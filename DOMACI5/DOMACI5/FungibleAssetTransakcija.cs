@@ -6,33 +6,15 @@ using System.Threading.Tasks;
 
 namespace DOMACI5
 {
-    public class FungibleAssetTransakcija
-    {
-        public Guid Id { get; }
-        public string AdresaFungibleAsstea { get; }
-        public DateTime Datum { get; }
-        public string AdresaWalletaKojiSaljeFungibleAsset { get; }
-        public string AdresaWalletaKojiPrimaFungibleAsset { get; }
-        public string PocetniBalansKojiSalje;
-        public string KrajnjiBalansKojiSalje;
-        public string PocetniBalansKojiPrima;
-        public string KrajnjiBalansKojiPrima;
-
-        public FungibleAssetTransakcija(string adresaFungibleAsstea, DateTime datum, string adresaWalletaKojiSaljeFungibleAsset, string adresaWalletaKojiPrimaFungibleAsset)
+    public class FungibleAssetTransakcija : Transakcija
+    {  
+        public double PocetniBalansKojiSalje;
+        public double KrajnjiBalansKojiSalje;
+        public double PocetniBalansKojiPrima;
+        public double KrajnjiBalansKojiPrima;
+        public FungibleAssetTransakcija(Guid adresaAsseta, DateTime datum, Guid adresaWalletaKojiSaljeAsset, Guid adresaWalletaKojiPrimaAsset) : base(adresaAsseta, datum, adresaWalletaKojiSaljeAsset, adresaWalletaKojiPrimaAsset)
         {
-            Id = Guid.NewGuid();
-            AdresaFungibleAsstea = adresaFungibleAsstea;
-            Datum = datum;
-            AdresaWalletaKojiSaljeFungibleAsset = adresaWalletaKojiSaljeFungibleAsset;
-            AdresaWalletaKojiPrimaFungibleAsset = adresaWalletaKojiPrimaFungibleAsset;
+
         }
-
-        public bool Opozvana()
-        {
-            return false;
-        }
-
-
-
     }
 }
