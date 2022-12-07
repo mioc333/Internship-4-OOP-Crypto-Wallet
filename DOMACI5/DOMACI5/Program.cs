@@ -1,6 +1,9 @@
 ﻿using DOMACI5;
 using System.Globalization;
 using System;
+using System.ComponentModel;
+using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DOMACI5
 {
@@ -8,6 +11,8 @@ namespace DOMACI5
     {
         static void Main(string[] args)
         {
+            //napravila sam jako mali dio domaceg jer vecinu stvari nisam ni znala kako bih napravila
+            //uglavnom sam pokusala napravit ono sta sam vidila na predavanju al vecina toga se jako zakomplicira 
             var fungibleAsset1 = new FungibleAsset("BitCoin", "BTC", 17101.38);
             var fungibleAsset2 = new FungibleAsset("Ethereum", "ETH", 1279.44);
             var fungibleAsset3 = new FungibleAsset("Tether", "USDT", 1);
@@ -19,6 +24,16 @@ namespace DOMACI5
             var fungibleAsset9 = new FungibleAsset("Monero", "XMR", 144.81);
             var fungibleAsset10 = new FungibleAsset("Quant", "QNT", 128.75);
 
+            AssetsStore.FungibleAssets.Add(fungibleAsset1);
+            AssetsStore.FungibleAssets.Add(fungibleAsset2);
+            AssetsStore.FungibleAssets.Add(fungibleAsset3);
+            AssetsStore.FungibleAssets.Add(fungibleAsset4);
+            AssetsStore.FungibleAssets.Add(fungibleAsset5);
+            AssetsStore.FungibleAssets.Add(fungibleAsset6);
+            AssetsStore.FungibleAssets.Add(fungibleAsset7);
+            AssetsStore.FungibleAssets.Add(fungibleAsset8);
+            AssetsStore.FungibleAssets.Add(fungibleAsset9);
+            AssetsStore.FungibleAssets.Add(fungibleAsset10);
 
             var nonFungibleAsset1 = new NonFungibleAsset("PictureBTC1", 2, fungibleAsset1.Adresa);
             var nonFungibleAsset2 = new NonFungibleAsset("PictureBTC2", 5, fungibleAsset1.Adresa);
@@ -41,6 +56,27 @@ namespace DOMACI5
             var nonFungibleAsset19 = new NonFungibleAsset("PictureQNT1", 35, fungibleAsset10.Adresa);
             var nonFungibleAsset20 = new NonFungibleAsset("PictureQNT2", 58, fungibleAsset10.Adresa);
 
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset1);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset2);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset3);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset4);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset5);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset6);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset7);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset8);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset9);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset10);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset11);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset12);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset13);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset14);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset15);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset16);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset17);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset18);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset19);
+            AssetsStore.NonFungibleAssets.Add(nonFungibleAsset20);
+
             var wallet1 = new BitcoinWallet();
             wallet1.AdresePodrzanihAsseta.Add(fungibleAsset1.Adresa);
             wallet1.AdresePodrzanihAsseta.Add(fungibleAsset2.Adresa);
@@ -53,18 +89,17 @@ namespace DOMACI5
             wallet1.BalansiFungibleAsseta.Add(fungibleAsset4.Adresa, 0);
             wallet1.BalansiFungibleAsseta.Add(fungibleAsset5.Adresa, 7);
 
-
             var wallet2 = new BitcoinWallet();
             wallet2.AdresePodrzanihAsseta.Add(fungibleAsset1.Adresa);
             wallet2.AdresePodrzanihAsseta.Add(fungibleAsset2.Adresa);
             wallet2.AdresePodrzanihAsseta.Add(fungibleAsset3.Adresa);
             wallet2.AdresePodrzanihAsseta.Add(fungibleAsset4.Adresa);
             wallet2.AdresePodrzanihAsseta.Add(fungibleAsset5.Adresa);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset1.Adresa, 10);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset2.Adresa, 0);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset3.Adresa, 3);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset4.Adresa, 82);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset5.Adresa, 7);
+            wallet2.BalansiFungibleAsseta.Add(fungibleAsset1.Adresa, 10);
+            wallet2.BalansiFungibleAsseta.Add(fungibleAsset2.Adresa, 0);
+            wallet2.BalansiFungibleAsseta.Add(fungibleAsset3.Adresa, 3);
+            wallet2.BalansiFungibleAsseta.Add(fungibleAsset4.Adresa, 82);
+            wallet2.BalansiFungibleAsseta.Add(fungibleAsset5.Adresa, 7);
 
             var wallet3 = new BitcoinWallet();
             wallet3.AdresePodrzanihAsseta.Add(fungibleAsset1.Adresa);
@@ -72,11 +107,11 @@ namespace DOMACI5
             wallet3.AdresePodrzanihAsseta.Add(fungibleAsset3.Adresa);
             wallet3.AdresePodrzanihAsseta.Add(fungibleAsset4.Adresa);
             wallet3.AdresePodrzanihAsseta.Add(fungibleAsset5.Adresa);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset1.Adresa, 52);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset2.Adresa, 61);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset3.Adresa, 100);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset4.Adresa, 8);
-            wallet1.BalansiFungibleAsseta.Add(fungibleAsset5.Adresa, 87);
+            wallet3.BalansiFungibleAsseta.Add(fungibleAsset1.Adresa, 52);
+            wallet3.BalansiFungibleAsseta.Add(fungibleAsset2.Adresa, 61);
+            wallet3.BalansiFungibleAsseta.Add(fungibleAsset3.Adresa, 100);
+            wallet3.BalansiFungibleAsseta.Add(fungibleAsset4.Adresa, 8);
+            wallet3.BalansiFungibleAsseta.Add(fungibleAsset5.Adresa, 87);
 
             var wallet4 = new SolanaWallet();
             wallet4.AdresePodrzanihAsseta.Add(fungibleAsset7.Adresa);
@@ -154,82 +189,18 @@ namespace DOMACI5
             wallet9.BalansiFungibleAsseta.Add(fungibleAsset5.Adresa, 45);
             wallet9.BalansiFungibleAsseta.Add(fungibleAsset6.Adresa, 43);
             wallet9.AdreseNonFungibleAssetaKojePosjeduje.Add(nonFungibleAsset11.Adresa);
-           
-            List<Wallet> listWallets= new List<Wallet>() { wallet1, wallet2, wallet3, wallet4, wallet5, wallet6, wallet7, wallet8, wallet9 };
 
+            WalletStore.Add(wallet1);
+            WalletStore.Add(wallet2);
+            WalletStore.Add(wallet3);
+            WalletStore.Add(wallet4);
+            WalletStore.Add(wallet5);
+            WalletStore.Add(wallet6);
+            WalletStore.Add(wallet7);
+            WalletStore.Add(wallet8);
+            WalletStore.Add(wallet9);
 
-
-
-
-
-
-
-            Console.WriteLine($"Adresa: {fungibleAsset1.Adresa}\n"
-                + $"Ime: {fungibleAsset1.Ime}\n"
-                + $"Oznaka: {fungibleAsset1.Oznaka}\n"
-                + $"Vrijednost: {fungibleAsset1.VrijednostUOdnosuNaDolar} \n");
-
-
-
-
-
-
-
-
-            void IzadiIzPrograma()
-            {
-                Console.Clear();
-                Console.WriteLine("Izasli ste iz aplikacije.");
-            }
-            void KreirajWallet()
-            {
-                string unos;
-                do
-                {
-                    Console.WriteLine("Odaberi:\n1-BitCoin wallet\n2-Ethereum walletu\n3-Solana walletu");
-                    unos = Console.ReadLine();
-                }
-                while (unos != "1" && unos != "2" && unos != "3");
-                int odabir = int.Parse(unos);
-                switch (odabir)
-                {
-                    case 1:
-                        Console.WriteLine("Odabrali ste BitCoin wallet.");
-                        break;
-                    case 2:
-                        Console.WriteLine("Odabrali ste Ethereum wallet.");
-                        break;
-                    case 3:
-                        Console.WriteLine("Odabrali ste Solana wallet.");
-                        break;
-                }
-
-            }
-            void PristupiWalletu()
-            {
-
-            }
-            void Izbornik()
-            {
-                string unos;
-                do
-                {
-                    Console.WriteLine("Odaberi:\n1-Kreiraj wallet\n2-Pristupi walletu");
-                    unos = Console.ReadLine();
-                }
-                while (unos != "1" && unos != "2");
-                int odabir = int.Parse(unos);
-                switch (odabir)
-                {
-                    case 1:
-                        KreirajWallet();
-                        Izbornik();
-                        break;
-                    case 2:
-                        PristupiWalletu();
-                        break;
-                }
-            }
+            Metode.Izbornik();
 
         }
     }

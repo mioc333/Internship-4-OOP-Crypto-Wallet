@@ -17,5 +17,11 @@ namespace DOMACI5
             VrijednostUOdnosuNaDolar = vrijednostUOdnosuNaDolar;
         }
 
+        public override string ToString()
+        {
+            return base.ToString() + $"Oznaka: {Oznaka}\n" + $"Vrijednost u USD: {VrijednostUOdnosuNaDolar}";
+
+        }
+
     }
 }

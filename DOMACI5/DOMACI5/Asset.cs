@@ -15,5 +15,15 @@ namespace DOMACI5
             Adresa = Guid.NewGuid();
             Ime = ime;
         }
+
+
+        public override string ToString()
+        {
+            return $"Adresa: {Adresa}\n" +
+                $"Ime asseta: {Ime}\n";
+
+        }
+
+
     }
 }

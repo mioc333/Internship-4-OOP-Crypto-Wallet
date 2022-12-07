@@ -9,7 +9,12 @@ namespace DOMACI5
 {
     public class BitcoinWallet : Wallet
     {
-        public BitcoinWallet() : base() { }
+        
+        public BitcoinWallet() : base() 
+        {
+            typeOfWallet = "BitCoin Wallet";
+        }
+
  
 
     }
